@@ -1,6 +1,6 @@
 /** @init Class */
 const privacyjs = {};
-privacyjs.v = '1.0';
+privacyjs.v = '1.2';
 privacyjs.e = document.getElementById('privacyjs');
 privacyjs.l = console.log('%cPrivacyJs ' + privacyjs.v, 'background: #222; color: #bada55');
 
@@ -12,9 +12,16 @@ class PrivacyJs {
     init() {
         const body = document.querySelector('body');
         var privacy = document.createElement('div');
+        privacy.classList = 'div-privacyjs';
+
         var span = document.createElement('span');
+        span.classList = 'div-span-privacyjs';
+
         var accept = document.createElement('a');
+        accept.classList = 'div-accept-privacyjs';
+
         var info = document.createElement('a');
+        info.classList = 'div-info-privacyjs';
 
         privacy.style.position = 'fixed';
         privacy.style.width = '100%';
@@ -67,6 +74,32 @@ class PrivacyJs {
             body.append(privacy);
         }
     }
+
+    serialize() {
+        const forms = document.querySelectorAll('form');
+        var label = document.createElement('label');
+        label.style.margin = '10px';
+
+        var p = document.createElement('span');
+        p.style.margin = '4px';
+        p.style.fontSize = '14px';
+        p.classList = 'p-privacyjs';
+
+        p.innerText = privacyjs.e.dataset.checkbox;
+
+        var checkbox = document.createElement('input');
+        checkbox.classList = 'checkbox-privacyjs';
+        checkbox.type = 'checkbox';
+        checkbox.id = 'checkbox';
+        checkbox.name = 'checkbox';
+        checkbox.required = true;
+        label.append(checkbox);
+        label.append(p);
+
+        forms.forEach(item => {
+            item.append(label);
+        })
+    }
 }
 
 if (!privacyjs.e) {
@@ -82,4 +115,8 @@ if (!privacyjs.e) {
      */
     privacyjs.i = new PrivacyJs();
     privacyjs.i.init();
+
+    if (privacyjs.e.dataset.serialize) {
+        privacyjs.i.serialize();
+    }
 }
