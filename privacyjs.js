@@ -1,6 +1,6 @@
 const privacyjs = document.getElementById('privacyjs');
 
-console.log.bind(console, "%c", "background: #3F51B5;color:#FFF;padding:5px;border-radius: 5px;line-height: 26px;", ""));
+console.log.bind(console, "%c", "background: #3F51B5;color:#FFF;padding:5px;border-radius: 5px;line-height: 26px;", "");
 
 if (privacyjs) {
 
